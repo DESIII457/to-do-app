@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="content" class="container py-5" style="background: linear-gradient(135deg, #ffd1dc, #ffb6c1); min-height: 100vh; border-radius: 10px;">
+    <div id="content" class="container py-7" style="background: linear-gradient(135deg, #ffd1dc, #ffb6c1); min-height: 100vh; border-radius: 10px;">
         {{-- Container utama dengan background pink gradient --}}
         <div class="card shadow-lg p-4 border-0 rounded-4" style="background: #fff0f5;">
             {{-- card → Bootstrap komponen untuk tampilan kotak (kartu)
