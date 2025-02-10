@@ -2,29 +2,15 @@
 
 @section('content')
     <div id="content" class="overflow-y-hidden overflow-x-hidden">
-        {{-- Atribut id dalam HTML adalah cara untuk memberi nama khusus pada bagian tertentu dari halaman web. Misalnya, jika kita punya bagian yang berisi konten utama, kita bisa memberi nama "content" pada bagian itu dengan menulis id="content". --}}
         @if ($lists->count() == 0)
             <div class="d-flex flex-column align-items-center">
                 <p class="fw-bold text-center">Belum ada tugas yang ditambahkan</p>
-                <button type="button" class="btn btn-sm d-flex align-items-center gap-2 btn-outline-primary"
-                    style="width: fit-content;">
+                <button type="button" class="btn btn-sm d-flex align-items-center gap-2 btn-outline-primary add-button">
                     <i class="bi bi-plus-square fs-3"></i> Tambah
                 </button>
             </div>
-            {{-- Tag <div> dalam HTML adalah elemen yang digunakan untuk mengelompokkan konten atau elemen lain di dalam halaman web. --}}
         @endif
         <div class="d-flex gap-3 px-3 flex-nowrap overflow-x-scroll overflow-y-hidden" style="height: 100vh;">
-            {{-- d-flex: Ini biasanya berasal dari framework CSS seperti Bootstrap. Kelas ini membuat elemen menjadi "flex container", yang berarti elemen di dalamnya akan diatur dalam satu baris atau kolom dengan cara yang fleksibel. --}}
-
-            {{-- gap-3: Ini menambahkan jarak (gap) antara elemen di dalam flex container. Angka "3" biasanya menunjukkan ukuran jarak yang ditentukan oleh framework. --}}
-
-            {{-- px-3: Ini memberikan padding (ruang di dalam) di sisi kiri dan kanan elemen. Sama seperti sebelumnya, "3" menunjukkan ukuran padding yang ditentukan --}}
-
-            {{-- flex-nowrap: Kelas ini memastikan bahwa elemen di dalam flex container tidak akan membungkus ke baris berikutnya. Semua elemen akan tetap berada dalam satu baris, meskipun mungkin akan melampaui lebar tampilan. --}}
-
-            {{-- overflow-y-hidden: Ini berarti jika konten di dalam elemen lebih tinggi daripada tinggi elemen, bagian yang melampaui tinggi tersebut tidak akan terlihat (disembunyikan) dan tidak akan ada scrollbar vertikal. --}}
-
-            {{-- height: 100vh: Ini berarti tinggi elemen akan sama dengan 100% dari tinggi viewport (area tampilan) browser. Jadi, elemen ini akan mengambil seluruh tinggi layar yang terlihat oleh pengguna. --}}
             @foreach ($lists as $list)
                 <div class="card flex-shrink-0" style="width: 18rem; max-height: 80vh;">
                     <div class="card-header d-flex align-items-center justify-content-between">
@@ -68,25 +54,24 @@
                                             {{ $task->description }}
                                         </p>
                                     </div>
-                                    @if (!$task->is_completed) 
-                                    {{-- Jika tugas belum selesai, maka tombol "Selesai" akan ditampilkan --}}
-                                    <div class="card-footer">
-                                        <form action="{{ route('tasks.complete', $task->id) }}" method="POST">
-                                            @csrf {{-- Token keamanan Laravel untuk mencegah serangan CSRF --}}
-                                            @method('PATCH') {{-- Menggunakan metode PATCH untuk memperbarui status tugas --}}
-                                            <button type="submit" class="btn btn-sm btn-primary w-100">
-                                                <span class="d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-check fs-5"></i> {{-- Ikon centang dari Bootstrap Icons --}}
-                                                    Selesai {{-- Teks tombol untuk menandai tugas telah selesai --}}
-                                                </span>
-                                            </button>
-                                        </form>
-                                    </div>
-                                @endif
+                                    @if (!$task->is_completed)
+                                        <div class="card-footer">
+                                            <form action="{{ route('tasks.complete', $task->id) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-sm btn-primary w-100">
+                                                    <span class="d-flex align-items-center justify-content-center">
+                                                        <i class="bi bi-check fs-5"></i>
+                                                        Selesai
+                                                    </span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    @endif
                                 </div>
                             @endif
                         @endforeach
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-sm btn-outline-primary add-button" data-bs-toggle="modal"
                             data-bs-target="#addTaskModal" data-list="{{ $list->id }}">
                             <span class="d-flex align-items-center justify-content-center">
                                 <i class="bi bi-plus fs-5"></i>
@@ -99,7 +84,7 @@
                     </div>
                 </div>
             @endforeach
-            <button type="button" class="btn btn-outline-primary flex-shrink-0" style="width: 18rem; height: fit-content;"
+            <button type="button" class="btn btn-outline-primary flex-shrink-0 add-button" style="width: 18rem; height: fit-content;"
                 data-bs-toggle="modal" data-bs-target="#addListModal">
                 <span class="d-flex align-items-center justify-content-center">
                     <i class="bi bi-plus fs-5"></i>
@@ -108,4 +93,26 @@
             </button>
         </div>
     </div>
+    
+    <style>
+        .add-button {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            border: none;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            border-radius: 20px;
+            padding: 10px 20px;
+        }
+        .add-button:hover {
+            background: linear-gradient(135deg, #fad0c4, #ff9a9e);
+            transform: scale(1.1);
+        }
+        .add-button i {
+            transition: transform 0.3s ease-in-out;
+        }
+        .add-button:hover i {
+            transform: rotate(360deg);
+        }
+    </style>
 @endsection
