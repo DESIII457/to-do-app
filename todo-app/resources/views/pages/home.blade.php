@@ -2,6 +2,7 @@
 
 @section('content')
     <div id="content" class="overflow-y-hidden overflow-x-hidden">
+        {{-- Atribut id dalam HTML adalah cara untuk memberi nama khusus pada bagian tertentu dari halaman web. Misalnya, jika kita punya bagian yang berisi konten utama, kita bisa memberi nama "content" pada bagian itu dengan menulis id="content". --}}
         @if ($lists->count() == 0)
             <div class="d-flex flex-column align-items-center">
                 <p class="fw-bold text-center">Belum ada tugas yang ditambahkan</p>
@@ -10,8 +11,20 @@
                     <i class="bi bi-plus-square fs-3"></i> Tambah
                 </button>
             </div>
+            {{-- Tag <div> dalam HTML adalah elemen yang digunakan untuk mengelompokkan konten atau elemen lain di dalam halaman web. --}}
         @endif
         <div class="d-flex gap-3 px-3 flex-nowrap overflow-x-scroll overflow-y-hidden" style="height: 100vh;">
+            {{-- d-flex: Ini biasanya berasal dari framework CSS seperti Bootstrap. Kelas ini membuat elemen menjadi "flex container", yang berarti elemen di dalamnya akan diatur dalam satu baris atau kolom dengan cara yang fleksibel. --}}
+
+            {{-- gap-3: Ini menambahkan jarak (gap) antara elemen di dalam flex container. Angka "3" biasanya menunjukkan ukuran jarak yang ditentukan oleh framework. --}}
+
+            {{-- px-3: Ini memberikan padding (ruang di dalam) di sisi kiri dan kanan elemen. Sama seperti sebelumnya, "3" menunjukkan ukuran padding yang ditentukan --}}
+
+            {{-- flex-nowrap: Kelas ini memastikan bahwa elemen di dalam flex container tidak akan membungkus ke baris berikutnya. Semua elemen akan tetap berada dalam satu baris, meskipun mungkin akan melampaui lebar tampilan. --}}
+
+            {{-- overflow-y-hidden: Ini berarti jika konten di dalam elemen lebih tinggi daripada tinggi elemen, bagian yang melampaui tinggi tersebut tidak akan terlihat (disembunyikan) dan tidak akan ada scrollbar vertikal. --}}
+
+            {{-- height: 100vh: Ini berarti tinggi elemen akan sama dengan 100% dari tinggi viewport (area tampilan) browser. Jadi, elemen ini akan mengambil seluruh tinggi layar yang terlihat oleh pengguna. --}}
             @foreach ($lists as $list)
                 <div class="card flex-shrink-0" style="width: 18rem; max-height: 80vh;">
                     <div class="card-header d-flex align-items-center justify-content-between">
@@ -31,10 +44,10 @@
                                     <div class="card-header">
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div class="d-flex flex-column justify-content-center gap-2">
-                                                <p
+                                                <a href="{{ route('tasks.show', $task->id) }}"
                                                     class="fw-bold lh-1 m-0 {{ $task->is_completed ? 'text-decoration-line-through' : '' }}">
                                                     {{ $task->name }}
-                                                </p>
+                                                </a>
                                                 <span class="badge text-bg-{{ $task->priorityClass }} badge-pill"
                                                     style="width: fit-content">
                                                     {{ $task->priority }}

@@ -9,11 +9,11 @@ class TaskListController extends Controller
 {
     public function store(Request $request) {
         $request->validate([
-            'name' => 'required|max:100'
+            'name' => 'required|max:100',
         ]);
 
         TaskList::create([
-            'name' => $request->name
+            'name' => $request->name,
         ]);
 
         return redirect()->back();
