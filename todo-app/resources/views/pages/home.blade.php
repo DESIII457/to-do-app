@@ -68,21 +68,21 @@
                                             {{ $task->description }}
                                         </p>
                                     </div>
-                                    @if (!$task->is_completed)
-                                        <div class="card-footer">
-                                            <form action="{{ route('tasks.complete', $task->id) }}" method="POST">
-                                                @csrf
-                                                @method('PATCH')
-                                                <button type="submit" class="btn btn-sm btn-primary w-100">
-                                                    <span class="d-flex align-items-center justify-content-center">
-                                                        <i class="bi bi-check fs-5"></i>
-                                                        Selesai
-                                                    </span>
-                                                </button>
-                                            </form>
-
-                                        </div>
-                                    @endif
+                                    @if (!$task->is_completed) 
+                                    {{-- Jika tugas belum selesai, maka tombol "Selesai" akan ditampilkan --}}
+                                    <div class="card-footer">
+                                        <form action="{{ route('tasks.complete', $task->id) }}" method="POST">
+                                            @csrf {{-- Token keamanan Laravel untuk mencegah serangan CSRF --}}
+                                            @method('PATCH') {{-- Menggunakan metode PATCH untuk memperbarui status tugas --}}
+                                            <button type="submit" class="btn btn-sm btn-primary w-100">
+                                                <span class="d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-check fs-5"></i> {{-- Ikon centang dari Bootstrap Icons --}}
+                                                    Selesai {{-- Teks tombol untuk menandai tugas telah selesai --}}
+                                                </span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                @endif
                                 </div>
                             @endif
                         @endforeach
