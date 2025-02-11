@@ -1,57 +1,71 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="content" class="container py-7" style="background: linear-gradient(135deg, #ffd1dc, #ffb6c1); min-height: 100vh; border-radius: 10px;">
-        {{-- Container utama dengan background pink gradient --}}
-        <div class="card shadow-lg p-4 border-0 rounded-4" style="background: #fff0f5;">
-            {{-- card → Bootstrap komponen untuk tampilan kotak (kartu)
-            shadow-lg → Menambahkan efek bayangan agar terlihat lebih elegan
-            p-4 → Padding dalam kartu agar isi tidak terlalu mepet
-            border-0 → Menghilangkan border bawaan Bootstrap
-            rounded-4 → Membuat sudut kartu melengkung agar lebih lembut
-            background: #fff0f5; → Warna soft pink untuk tampilan lebih manis --}}
-            {{-- Kartu dengan warna soft pink --}}
-            <h1 class="mb-4 text-center text-danger fw-bold text-uppercase" style="letter-spacing: 2px; text-shadow: 2px 2px 5px rgba(255, 105, 180, 0.5);">
-                🎀 Detail Tugas
-            </h1>
-            {{-- text-center → Posisikan teks di tengah
-            text-danger → Warna merah (agar kontras dengan latar pink)
-            fw-bold → Font tebal
-            text-uppercase → Huruf besar semua
-            letter-spacing: 2px; → Memberikan sedikit jarak antar huruf agar lebih estetis
-            text-shadow: 2px 2px 5px rgba(255, 105, 180, 0.5); → Efek bayangan tipis untuk memperjelas teks
-            --}}
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="mb-3">
-                        <h3 class="fw-bold text-dark">{{ $task->name }}</h3>
+    <div id="content" class="container py-5">
+        <div class="card shadow-lg rounded-4 border-0 overflow-hidden">
+            <div class="card-body p-5">
+                <h1 class="mb-4 text-primary d-flex align-items-center">
+                    <i class="bi bi-balloon-heart-fill"></i>
+                    <span class="fs-3">Detail Tugas</span>
+                </h1>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3 class="mb-3 text-dark">{{ $task->name }}</h3>
                         <p class="text-muted">{{ $task->description }}</p>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-4 mt-md-0">
+                        <span class="badge bg-{{ $task->priorityClass }} badge-pill px-4 py-2 fw-bold text-uppercase shadow-sm">
+                            {{ ucfirst($task->priority) }}
+                        </span>
+                        <span class="badge bg-{{ $task->status ? 'success' : 'danger' }} badge-pill px-4 py-2 fw-bold text-uppercase shadow-sm">
+                            {{ $task->status ? '✅ Selesai' : '⏳ Belum selesai' }}
+                        </span>
                     </div>
                 </div>
 
-                <div class="col-md-4 d-flex flex-column align-items-start">
-                    <span class="badge fs-6 px-3 py-2 shadow-sm" style="background-color: #ff69b4; color: white;">
-                        {{ $task->priority }}
-                    </span>
-                    <span class="badge fs-6 px-3 py-2 mt-2 shadow-sm" 
-                          style="background-color: {{ $task->is_completed ? '#ffb6c1' : '#ff1493' }}; color: white;">
-                        {{ $task->is_completed ? 'Selesai 🎉' : 'Belum Selesai ❌' }}
-                    </span>
+                <hr class="my-4 border-muted">
+
+                <div class="d-flex justify-content-between mt-5">
+                    <a href="{{ route('tasks.index') }}" class="btn btn-outline-danger btn-lg shadow-lg transition-all hover-effect">
+                        ⬅ Kembali
+                    </a>
+                    <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-danger btn-lg shadow-lg transition-all hover-effect">
+                        ✏️ Edit Tugas
+                    </a>
                 </div>
             </div>
-
-            @if (!$task->is_completed)
-                <div class="mt-4 text-center">
-                    <form action="{{ route('tasks.complete', $task->id) }}" method="POST">
-                        @csrf
-                        @method('PATCH')
-                        <button type="submit" class="btn text-white w-75 shadow-sm" 
-                                style="background-color: #ff69b4; transition: all 0.3s ease-in-out;">
-                            <i class="bi bi-check-circle"></i> Tandai sebagai Selesai
-                        </button>
-                    </form>
-                </div>
-            @endif
         </div>
     </div>
+
+    <style>
+        /* Efek hover pada tombol */
+        .hover-effect:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Tambahkan efek transisi halus pada tombol */
+        .transition-all {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Warna border pada hr */
+        .border-muted {
+            border-color: #f0f0f0;
+        }
+
+        /* Membuat layout lebih responsif dan bersih */
+        @media (max-width: 768px) {
+            .card-body {
+                padding: 3rem;
+            }
+            .fs-2 {
+                font-size: 2rem;
+            }
+            .fs-3 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
 @endsection

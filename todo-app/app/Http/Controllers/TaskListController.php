@@ -24,4 +24,5 @@ class TaskListController extends Controller
 
         return redirect()->back();
     }
+    
 }

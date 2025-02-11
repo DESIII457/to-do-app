@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TaskList extends Model
+class  TaskList extends Model
 {
     protected $fillable = ['name'];
     protected $guarded = [

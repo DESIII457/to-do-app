@@ -1,9 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top shadow-sm">
     <div class="container d-flex justify-content-between">
         <div class="d-flex align-items-center">
-            <button class="btn btn-outline-light me-2" onclick="window.history.back()">
-                <i class="bi bi-arrow-left"></i> Back
-            </button>
+            
             <a class="navbar-brand fw-bolder text-uppercase" href="#">{{ config('app.name') }}</a>
         </div>
         <form class="d-flex bg-light rounded-3 p-1" role="search" style="max-width: 300px; background-color: #af32af;">
