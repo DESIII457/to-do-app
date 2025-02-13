@@ -8,30 +8,60 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    
-    public function index() {
+    public function index(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            $tasks = Task::where('name', 'like', "%{$query}%")
+                ->orWhere('description', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+
+            $lists = TaskList::where('name', 'like', "%{$query}%")
+                ->orWhereHas('tasks', function ($q) use ($query) {
+                    $q->where('name', 'like', "%{$query}%")
+                        ->orWhere('description', 'like', "%{$query}%");
+                })
+                ->with('tasks')
+                ->get();
+
+
+            if ($tasks->isEmpty()) {
+                $lists->load('tasks');
+            } else {
+                $lists->load(['tasks' => function ($q) use ($query) {
+                    $q->where('name', 'like', "%{$query}%")
+                        ->orWhere('description', 'like', "%{$query}%");
+                }]);
+            }
+        } else {
+            $tasks = Task::latest()->get();
+            $lists = TaskList::with('tasks')->get();
+        }
+
         $data = [
             'title' => 'Home',
-            'lists' => TaskList::all(),
-            'tasks' => Task::orderBy('created_at', 'desc')->get(),
+            'lists' => $lists,
+            'tasks' => $tasks,
             'priorities' => Task::PRIORITIES
         ];
 
         return view('pages.home', $data);
     }
 
-    public function store(Request $request) {
+
+    public function store(Request $request)
+    {
         $request->validate([
             'name' => 'required|max:100',
-            'description' => 'required|max:100',
-            'priority' => 'required|in:low,medium,high',
+            'description' => 'max:255',
             'list_id' => 'required'
         ]);
 
         Task::create([
             'name' => $request->name,
             'description' => $request->description,
-            'priority' => $request->priority,
             'list_id' => $request->list_id
         ]);
 
@@ -39,7 +69,8 @@ class TaskController extends Controller
         return redirect()->back();
     }
 
-    public function complete($id) {
+    public function complete($id)
+    {
         Task::findOrFail($id)->update([
             'is_completed' => true
         ]);
@@ -47,44 +78,53 @@ class TaskController extends Controller
         return redirect()->back();
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         Task::findOrFail($id)->delete();
 
-        return redirect()->back();
+        return redirect()->route('home');
     }
-    public function edit(Task $task)
-{
-    // Logika untuk menampilkan halaman edit tugas
-    return view('tasks.edit', compact('task'));
-}
 
-    public function show($id) {
-        $task = Task::findOrFail($id);
-
+    public function show($id)
+    {
         $data = [
-            'title' => 'Details',
-            'task' => $task,
+            'title' => 'Task',
+            'lists' => TaskList::all(),
+            'task' => Task::findOrFail($id),
         ];
 
         return view('pages.details', $data);
-}
-public function update(Request $request, $id)
-{
-    // Mencari task berdasarkan ID
-    $task = Task::findOrFail($id);
+    }
 
-    // Validasi data yang dikirimkan
-    $validatedData = $request->validate([
-        'name' => 'required|max:255',  // Gantilah sesuai dengan kolom yang ada
-        'description' => 'nullable|max:500',
-    ]);
+    public function changeList(Request $request, Task $task)
+    {
+        $request->validate([
+            'list_id' => 'required|exists:task_lists,id',
+        ]);
 
-    // Update data task
-    $task->name = $validatedData['name'];
-    $task->description = $validatedData['description'];
-    $task->save();  // Menyimpan perubahan ke database
+        Task::findOrFail($task->id)->update([
+            'list_id' => $request->list_id
+        ]);
 
-    // Redirect ke halaman yang sesuai, bisa juga menambahkan flash message atau status
-    return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');
-}
+        return redirect()->back()->with('success', 'List berhasil diperbarui!');
+    }
+
+    public function update(Request $request, Task $task)
+    {
+        $request->validate([
+            'list_id' => 'required',
+            'name' => 'required|max:100',
+            'description' => 'max:255',
+            'priority' => 'required|in:low,medium,high'
+        ]);
+
+        Task::findOrFail($task->id)->update([
+            'list_id' => $request->list_id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'priority' => $request->priority
+        ]);
+
+        return redirect()->back()->with('success', 'Task berhasil diperbarui!');
+    }
 }

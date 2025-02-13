@@ -39,15 +39,17 @@
                         placeholder="Masukkan nama list">
                 </div>
                 <div class="mb-3">
-                    <label for="name" class="form-label">deskripsi</label>
-                    <input type="text" class="form-control" id="description" name="description"
-                        placeholder="Masukkan deskripsi">
+                    <label for="description" class="form-label">Deskripsi</label>
+                    <textarea class="form-control" name="description" id="description" rows="3" placeholder="Masukkan deskripsi"></textarea>
                 </div>
-                <select class="form-select form-select-sm" aria-label="Small select example" id="priority" name="priority">
-                    <option value="low">low</option>
-                    <option value="medium" selected>medium</option>
-                    <option value="high">high</option>
-                  </select>
+                <div class="mb-3">
+                    <label for="priority" class="form-label">Priority</label>
+                    <select class="form-control" name="priority" id="priority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
