@@ -37,8 +37,21 @@ div dengan id="content" digunakan sebagai wadah utama dengan properti CSS untuk 
                 {{--  Menampilkan Kartu untuk Setiap Daftar --}}
                 <div class="card flex-shrink-0 shadow-lg rounded-4 border-0 bg-white" style="width: 18rem; max-height: 80vh;">
                     <div class="card-header d-flex align-items-center justify-content-between bg-dark text-white rounded-top-4">
+                        {{-- card-header: Bagian atas dari kartu Bootstrap yang biasanya berisi judul atau kontrol.
+                        d-flex: Mengaktifkan flexbox untuk pengaturan tata letak elemen secara horizontal.
+                        align-items-center: Menjadikan elemen di dalam div sejajar secara vertikal di tengah.
+                        justify-content-between: Menempatkan elemen di dalamnya di sisi kiri dan kanan dengan ruang di antaranya.
+                        bg-dark: Memberikan warna latar belakang gelap (hitam).
+                        text-white: Membuat teks berwarna putih agar kontras dengan latar belakang.
+                        rounded-top-4: Membuat sudut atas kartu lebih melengkung dengan tingkat 4 (Bootstrap border-radius). --}}
                         <h4 class="card-title fw-bold">{{ $list->name }} 📝</h4>
+                        {{-- h4: Elemen heading dengan ukuran lebih kecil dibanding <h1>, tetapi masih cukup menonjol.
+                        card-title: Kelas Bootstrap untuk menandakan bahwa ini adalah judul dalam kartu.
+                        fw-bold: Menjadikan teks lebih tebal.
+                        {{ $list->name }}: Menampilkan nama daftar (kemungkinan dari database dalam Laravel).
+                        📝: Menambahkan emoji catatan untuk visualisasi tambahan. --}}
                         <form action="{{ route('lists.destroy', $list->id) }}" method="POST" style="display: inline;">
+                            {{-- HTTP request default adalah POST, tetapi kita akan mengganti metode menjadi DELETE dengan @method('DELETE'). --}}
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm p-0 border-0 bg-transparent">
@@ -111,6 +124,14 @@ div dengan id="content" digunakan sebagai wadah utama dengan properti CSS untuk 
             @endforeach
             {{-- Tombol Tambah List Baru --}}
             <button type="button" class="btn btn-outline-primary flex-shrink-0 add-button rounded-pill shadow-lg" style="width: 18rem; height: fit-content;" data-bs-toggle="modal" data-bs-target="#addListModal">
+                {{-- 
+                    btn                  : Kelas Bootstrap untuk tombol
+                    btn-outline-primary  : Membuat tombol dengan border biru (primary) dan latar transparan
+                    flex-shrink-0        : Mencegah tombol mengecil dalam elemen flexbox
+                    add-button           : Kelas tambahan untuk keperluan styling khusus
+                    rounded-pill         : Membuat tombol berbentuk lonjong (border-radius besar)
+                    shadow-lg            : Menambahkan efek bayangan besar agar lebih menarik
+                --}}
                 ➕ Tambah List
             </button>
         </div>
