@@ -12,18 +12,6 @@
             </div>
         @endif
 
-
-
-        <div class="row my-3">
-            <div class="col-6 mx-auto">
-                <form action="{{ route('home') }}" method="GET" class="d-flex gap-5 coquette-form">
-                    <input type="text" class="form-control coquette-input" name="query" placeholder="Cari tugas atau list..."
-                        value="{{ request()->query('query') }}">
-                    <button type="submit" class="btn btn-coquette">Cari</button>
-                </form>
-            </div>
-        </div>
-
         <div class="d-flex gap-3 px-3 flex-nowrap overflow-x-scroll overflow-y-hidden" style="height: 100vh;">
             @foreach ($lists as $list)
                 <div class="card flex-shrink-0 border-0 shadow-lg pastel-card" style="width: 18rem; max-height: 80vh;">
@@ -97,16 +85,7 @@
                     </div>
                 </div>
             @endforeach
-        
-            @if ($lists->count() !== 0)
-                <button type="button" class="btn btn-outline-primary flex-shrink-0 cute-btn"
-                    style="width: 18rem; height: fit-content;" data-bs-toggle="modal" data-bs-target="#addListModal">
-                    <span class="d-flex align-items-center justify-content-center">
-                        <i class="bi bi-plus fs-5"></i>
-                        Tambah 🎀
-                    </span>
-                </button>
-            @endif
+    
         </div>
         
         <style>
@@ -120,12 +99,12 @@
             .pastel-card {
                 background: white;
                 border-radius: 20px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                box-shadow: none;
                 
             }
             .pastel-card:hover {
                 
-                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+                box-shadow:none;
             }
         
             /* Teks aesthetic */
@@ -162,7 +141,7 @@
                 background-color: #f9f3f3; /* Warna latar belakang pastel */
                 border-radius: 15px; /* Sudut yang lebih bulat */
                 padding: 20px; /* Ruang di dalam form */
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan halus */
+                box-shadow: none; /* Bayangan halus */
             }
 
             .coquette-input {

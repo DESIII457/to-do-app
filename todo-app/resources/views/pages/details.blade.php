@@ -105,10 +105,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Edit</button>
-                </div>
+                
             </form>
         </div>
     </div>

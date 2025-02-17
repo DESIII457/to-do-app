@@ -62,6 +62,7 @@ class TaskController extends Controller
         Task::create([
             'name' => $request->name,
             'description' => $request->description,
+            'priority' =>$request->priority,
             'list_id' => $request->list_id
         ]);
 
@@ -115,6 +116,7 @@ class TaskController extends Controller
             'list_id' => 'required',
             'name' => 'required|max:100',
             'description' => 'max:255',
+            'priority' =>'required',
             'priority' => 'required|in:low,medium,high'
         ]);
 
