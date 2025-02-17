@@ -64,7 +64,7 @@
                                             <button type="submit" class="btn btn-sm btn-primary w-100 cute-btn">
                                                 <span class="d-flex align-items-center justify-content-center">
                                                     <i class="bi bi-heart-fill fs-5"></i>
-                                                    Selesai ✨
+                                                    Selesai 
                                                 </span>
                                             </button>
                                         </form>
@@ -76,7 +76,7 @@
                             data-bs-target="#addTaskModal" data-list="{{ $list->id }}">
                             <span class="d-flex align-items-center justify-content-center">
                                 <i class="bi bi-plus fs-5"></i>
-                                Tambah 🎀
+                                Tambah 
                             </span>
                         </button>
                     </div>
