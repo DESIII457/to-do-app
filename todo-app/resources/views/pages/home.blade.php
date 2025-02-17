@@ -105,7 +105,7 @@
             <h5 class="text-coquette mb-3">Tentang Pembuat Halaman</h5>
             <img src="{{asset('images/c4380d8f0d7cbb4221446bb0105c8191.jpg')}}" alt="Gambar Profil" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
             <p class="fw-bold">Halaman ini dibuat oleh DESI LISNAWATI.</p>
-            <p class="text-muted">Pembuat to-do-list ini adalah seorang manusia yang mempunyai hobi menggambar, membuat kerajinan tangan atau pun kadang kadang dia menjadi anomali di tengah kesibukan dunia yang tiada hentinya di zaman sekarang.</p>
+            <p class="text-muted">Pembuat to-do-list ini adalah seorang manusia yang mempunyai hobi menggambar, membuat kerajinan tangan atau pun kadang kadang dia menjadi anomali di tengahh kesibukan dunia yang tiada hentinya di zaman sekarang.</p>
             
             <div class="social-icons mt-3">
                 <a href="https://github.com/" class="text-decoration-none me-2" target="_blank">
