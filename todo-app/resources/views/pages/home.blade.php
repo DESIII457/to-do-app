@@ -119,8 +119,9 @@
                 <a href="[LINK_LINKEDIN]" class="text-decoration-none me-2" target="_blank">
                     <i class="bi bi-facebook fs-4 text-coquette"></i>
                 </a>
+                {{-- link mengarah ke instagram --}}
                 <a href="[LINK_TWITTER]" class="text-decoration-none" target="_blank">
-                    <i class="bi bi-twitter fs-4 text-coquette"></i>
+                    <i class="bi bi-instagram fs-4 text-coquette"></i>
                 </a>
             </div>
             
@@ -128,6 +129,14 @@
         </div>
 
         <style>
+            #content {
+                background-image: url('images/aa6cf3d8c4f77810f93714ad3b7e2b00 (2).jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                backdrop-filter: blur(10px); /* Efek blur */
+                
+            }
             .about-creator {
                 background-color: #fce4ec; /* Warna latar belakang untuk bagian tentang pembuat */
                 padding: 20px;
