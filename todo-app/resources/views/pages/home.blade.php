@@ -101,7 +101,7 @@
         </div>
 
         <!-- Bagian tentang pembuat halaman -->
-        <div class="about-creator mt-5 text-center p-4 rounded shadow" style="background-color: #fce4ec;">
+        <div class="about-creator mt-70 text-center p-4 rounded shadow" style="background-color: #e99bb5;">
             <h5 class="text-coquette mb-3">Tentang Pembuat Halaman</h5>
             <img src="{{asset('images/c4380d8f0d7cbb4221446bb0105c8191.jpg')}}" alt="Gambar Profil" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
             <p class="fw-bold">Halaman ini dibuat oleh DESI LISNAWATI.</p>
@@ -197,6 +197,11 @@
             .coquette-input:focus {
                 border-color: #ff3b30;
                 outline: none;
+            }
+            .d-flex.gap-3.px-3.flex-nowrap.overflow-x-scroll.overflow-y-hidden {
+                backdrop-filter: blur(10px);
+                background: rgba(255, 255, 255, 0.2); /* Sesuaikan transparansi */
+                
             }
         </style>
     </div>
