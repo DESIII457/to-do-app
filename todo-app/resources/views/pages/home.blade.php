@@ -99,8 +99,46 @@
                 </div>
             @endforeach
         </div>
-        
+
+        <!-- Bagian tentang pembuat halaman -->
+        <div class="about-creator mt-5 text-center p-4 rounded shadow" style="background-color: #fce4ec;">
+            <h5 class="text-coquette mb-3">Tentang Pembuat Halaman</h5>
+            <img src="{{asset('images/c4380d8f0d7cbb4221446bb0105c8191.jpg')}}" alt="Gambar Profil" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+            <p class="fw-bold">Halaman ini dibuat oleh DESI LISNAWATI.</p>
+            <p class="text-muted">Pembuat to-do-list ini adalah seorang manusia yang mempunyai hobi menggambar, membuat kerajinan tangan atau pun kadang kadang dia menjadi anomali di tengah kesibukan dunia yang tiada hentinya di zaman sekarang.</p>
+            
+            <div class="social-icons mt-3">
+                <a href="https://github.com/" class="text-decoration-none me-2" target="_blank">
+                    <i class="bi bi-github fs-4 text-coquette"></i>
+                </a>
+                <a href="[LINK_LINKEDIN]" class="text-decoration-none me-2" target="_blank">
+                    <i class="bi bi-facebook fs-4 text-coquette"></i>
+                </a>
+                <a href="[LINK_TWITTER]" class="text-decoration-none" target="_blank">
+                    <i class="bi bi-twitter fs-4 text-coquette"></i>
+                </a>
+            </div>
+            
+            <a href="[LINK_PROFIL]" class="btn btn-coquette mt-3">Lihat Profil</a>
+        </div>
+
         <style>
+            .about-creator {
+                background-color: #fce4ec; /* Warna latar belakang untuk bagian tentang pembuat */
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .social-icons a {
+                color: #d81b60; /* Warna ikon sosial media */
+                transition: color 0.3s;
+            }
+
+            .social-icons a:hover {
+                color: #ff3b30; /* Warna saat hover */
+            }
+            
             /* Warna pastel untuk tampilan coquette */
             .bg-light-pink { background-color: #fce4ec; }
             .bg-light-lilac { background-color: #ede7f6; }
@@ -113,7 +151,7 @@
                 border-radius: 20px;
                 box-shadow: none;
             }
-        
+    
             /* Teks aesthetic */
             .text-coquette {
                 font-family: 'Dancing Script', cursive;
@@ -146,6 +184,6 @@
                 border-color: #ff3b30;
                 outline: none;
             }
-        </style>        
+        </style>
     </div>
 @endsection
