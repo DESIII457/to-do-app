@@ -108,7 +108,12 @@
             <p class="text-muted">Pembuat to-do-list ini adalah seorang manusia yang mempunyai hobi menggambar, membuat kerajinan tangan atau pun kadang kadang dia menjadi anomali di tengahh kesibukan dunia yang tiada hentinya di zaman sekarang.</p>
             
             <div class="social-icons mt-3">
+                <!-- Link yang mengarah ke GitHub -->
                 <a href="https://github.com/" class="text-decoration-none me-2" target="_blank">
+                {{--  Menentukan URL tujuan, dalam hal ini GitHub.
+                text-decoration-none → Menghapus underline bawaan dari tautan.
+                me-2 → Menambahkan margin-end (jarak ke kanan) sebesar 2 (Bootstrap spacing). --}}
+                    <!-- Ikon GitHub menggunakan Bootstrap Icons -->
                     <i class="bi bi-github fs-4 text-coquette"></i>
                 </a>
                 <a href="[LINK_LINKEDIN]" class="text-decoration-none me-2" target="_blank">
