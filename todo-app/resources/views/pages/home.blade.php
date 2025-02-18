@@ -22,18 +22,33 @@
             @foreach ($lists as $list)
                 <!-- Card untuk setiap list -->
                 <div class="card flex-shrink-0 border-0 shadow-lg pastel-card" style="width: 18rem; max-height: 80vh;">
+                    <!-- Header kartu dengan styling dan layout flexbox -->
                     <div class="card-header d-flex align-items-center justify-content-between bg-light-pink rounded-top">
-                        <!-- Nama list -->
+                        {{-- Ini adalah bagian header kartu.
+                        Menggunakan d-flex align-items-center justify-content-between untuk membuat tata letak fleksibel:
+                        align-items-center: Rata tengah vertikal.
+                        justify-content-between: Menyebarkan elemen ke kiri dan kanan.
+                        bg-light-pink: Warna latar belakang khusus (kemungkinan class custom).
+                        rounded-top: Membuat sudut atas kartu membulat. --}}
+
+                        <!-- Nama list yang ditampilkan sebagai judul -->
+                        {{-- Menampilkan nama list sebagai judul kartu. --}}
                         <h4 class="card-title text-coquette fw-bold">{{ $list->name }}</h4>
-                        <!-- Tombol hapus list -->
+
+                        <!-- Form untuk menghapus list dengan metode POST-->
                         <form action="{{ route('lists.destroy', $list->id) }}" method="POST" style="display: inline;">
-                            @csrf
-                            @method('DELETE')
+                            {{-- route('lists.destroy', $list->id): Mengarahkan ke rute lists.destroy dengan ID list yang akan dihapus. style="display: inline;": Memastikan form tetap dalam satu baris dengan elemen lain. --}}
+                            @csrf <!-- Token keamanan Laravel untuk mencegah CSRF attacks -->
+                            @method('DELETE') <!-- Mengubah metode form menjadi DELETE sesuai dengan RESTful API -->
+
+                            <!-- Tombol hapus dengan ikon trash -->
                             <button type="submit" class="btn btn-sm p-0">
-                                <i class="bi bi-trash fs-5 text-danger"></i>
+                                <i class="bi bi-trash fs-5 text-danger"></i> <!-- Ikon trash berwarna merah -->
                             </button>
                         </form>
+
                     </div>
+
                     <div class="card-body d-flex flex-column gap-2 overflow-x-hidden">
                         @foreach ($list->tasks as $task)
                             <!-- Card untuk setiap tugas dalam list -->
