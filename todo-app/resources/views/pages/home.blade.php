@@ -48,7 +48,7 @@
                         </form>
 
                     </div>
-
+                    {{-- Kode ini membuat bagian body kartu untuk daftar tugas. Setiap tugas akan ditampilkan dalam bentuk kartu individu, dengan warna berbeda jika tugas sudah selesai. Header kartu tugas diberi warna lilac, dan layoutnya disusun menggunakan Flexbox agar rapi dan mudah dibaca. --}}
                     <div class="card-body d-flex flex-column gap-2 overflow-x-hidden">
                         {{-- d-flex flex-column:
                             Menggunakan Flexbox untuk menyusun elemen secara vertikal.
@@ -57,9 +57,18 @@
                             overflow-x-hidden:
                             Menyembunyikan konten yang melewati lebar container untuk mencegah scroll horizontal. --}}
                         @foreach ($list->tasks as $task)
+                        {{-- Perulangan @foreach untuk menampilkan semua tugas dalam $list->tasks.
+                            $task merepresentasikan setiap tugas dalam daftar. --}}
                             <!-- Card untuk setiap tugas dalam list -->
                             <div class="card {{ $task->is_completed ? 'bg-secondary-subtle' : '' }} cute-task-card">
+                                {{-- <div class="card">: Membuat kartu untuk setiap tugas dalam daftar.
+                                {{ $task->is_completed ? 'bg-secondary-subtle' : '' }}:
+                                Jika tugas selesai (is_completed == true), kartu diberi warna secondary-subtle (abu-abu redup).
+                                Jika belum selesai, warna tetap default.
+                                cute-task-card: Class tambahan (kemungkinan custom CSS) untuk styling kartu tugas. --}}
                                 <div class="card-header bg-light-lilac">
+                                {{-- card-header: Header dari setiap kartu tugas.
+                                bg-light-lilac: Class custom untuk memberi warna latar header. --}}
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div class="d-flex justify-content-center gap-2">
                                             <!-- Jika tugas prioritas tinggi dan belum selesai, tampilkan indikator -->
@@ -81,8 +90,20 @@
                                                 {{-- Menutup blok @if, mengakhiri kondisi. --}}
                                             @endif
                                             <!-- Nama tugas dengan tautan ke detail tugas -->
+
+                                            {{-- Kode ini membuat tautan ke halaman detail tugas, dengan warna teks sesuai prioritas. Jika tugas sudah selesai, namanya akan dicoret. --}}
                                             <a href="{{ route('tasks.show', $task->id) }}"
                                                 class="fw-bold lh-1 m-0 text-decoration-none text-{{ $task->priorityClass }} cute-text {{ $task->is_completed ? 'text-decoration-line-through' : '' }}">
+                                                {{-- lh-1: Mengatur tinggi baris menjadi lebih rapat.
+                                                m-0: Menghilangkan margin default agar lebih padat.
+                                                text-decoration-none: Menghilangkan garis bawah bawaan dari link (<a>).
+                                                text-{{ $task->priorityClass }}:
+                                                Kelas dinamis untuk warna teks berdasarkan prioritas tugas.
+                                                Jika priorityClass adalah "danger", maka teks akan berwarna merah (text-danger).
+                                                cute-text: Kemungkinan class custom CSS untuk styling tambahan.
+                                                {{ $task->is_completed ? 'text-decoration-line-through' : '' }}:
+                                                Jika tugas sudah selesai (is_completed == true), teks akan diberi efek coret (strikethrough).
+                                                Jika belum selesai, teks tetap normal. --}}
                                                 {{ $task->name }}
                                             </a>
                                         </div>
