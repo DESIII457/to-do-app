@@ -49,8 +49,15 @@
                                                 Jika kedua kondisi ini terpenuhi, maka blok kode di dalamnya akan dieksekusi. --}}
                                                 <div class="spinner-grow spinner-grow-sm text-{{ $task->priorityClass }}"
                                                     role="status">
+                                                    {{-- spinner-grow: Komponen spinner dari Bootstrap yang menunjukkan proses berjalan.
+                                                    spinner-grow-sm: Mengatur ukuran spinner menjadi kecil.
+                                                    text-{{ $task->priorityClass }}: Menggunakan kelas warna dinamis berdasarkan nilai $task->priorityClass, yang mungkin berisi warna seperti "danger" untuk prioritas tinggi.
+                                                    role="status": Menandakan elemen ini sebagai status loading bagi pembaca layar. --}}
                                                     <span class="visually-hidden">Loading...</span>
+                                                    {{-- visually-hidden: Kelas Bootstrap yang menyembunyikan teks dari tampilan tetapi tetap terbaca oleh pembaca layar (screen reader).
+                                                    Loading...: Memberikan informasi tambahan kepada pengguna dengan kebutuhan aksesibilitas. --}}
                                                 </div>
+                                                {{-- Menutup blok @if, mengakhiri kondisi. --}}
                                             @endif
                                             <!-- Nama tugas dengan tautan ke detail tugas -->
                                             <a href="{{ route('tasks.show', $task->id) }}"
