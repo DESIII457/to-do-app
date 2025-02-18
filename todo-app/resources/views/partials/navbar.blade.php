@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/style.css">
 <!-- Navbar dengan kelas Bootstrap untuk styling -->
 <nav class="navbar navbar-expand-lg bg-pink navbar-dark fixed-top shadow-sm">
     <div class="container d-flex justify-content-between">
@@ -32,53 +33,3 @@
     </div>
 </nav>
 
-<style>
-
-.coquette-form {
-    background-color: #f9f3f3; /* Warna latar belakang pastel */
-    border-radius: 15px; /* Sudut yang lebih bulat */
-    padding: 20px; /* Ruang di dalam form */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan halus */
-}
-
-.coquette-input {
-    border: 2px solid #ff6f61; /* Warna border yang cerah */
-    border-radius: 10px; /* Sudut input yang lebih bulat */
-    padding: 10px; /* Ruang di dalam input */
-    transition: border-color 0.3s; /* Transisi halus saat hover */
-    margin-right: 8px; /* Sesuaikan jaraknya */
-}
-
-.coquette-input:focus {
-    border-color: #ff3b30; /* Warna border saat fokus */
-    outline: none; /* Menghilangkan outline default */
-}
-
-.btn-coquette {
-    background-color: #ff61e5; /* Warna latar belakang tombol */
-    color: white; /* Warna teks tombol */
-    border-radius: 10px; /* Sudut tombol yang lebih bulat */
-    transition: background-color 0.3s; /* Transisi halus saat hover */
-}
-
-.btn-coquette:hover {
-    background-color: #ff3b30; /* Warna latar belakang saat hover */
-}
-
-.bg-pink {
-    background-color: #ff77a8; /* Warna latar belakang pink */
-}
-
-.navbar-dark .navbar-brand {
-    color: #fff; /* Warna teks putih untuk navbar-brand */
-    transition: color 0.3s; /* Transisi halus saat hover */
-}
-
-.navbar-dark .navbar-brand:hover {
-    color: #ff3b30; /* Warna teks saat hover */
-}
-
-.shadow-sm {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Bayangan halus */
-}
-</style>
