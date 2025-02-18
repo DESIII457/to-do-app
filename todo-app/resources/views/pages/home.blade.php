@@ -21,7 +21,8 @@
         <div class="d-flex gap-3 px-3 flex-nowrap overflow-x-scroll overflow-y-hidden" style="height: 100vh;">
             @foreach ($lists as $list)
                 <!-- Card untuk setiap list -->
-                <div class="card flex-shrink-0 border-0 shadow-lg pastel-card" style="width: 18rem; max-height: 80vh;">
+                <div class="card flex-shrink-0 border-0 shadow-lg pastel-card" style="width: 18rem; max-height: 80vh; ">
+                    <img src="{{asset('images/OIP.jpg')}}" alt="Gambar Profil" style="width: 288px; height: 100px;">
                     <!-- Header kartu dengan styling dan layout flexbox -->
                     <div class="card-header d-flex align-items-center justify-content-between bg-light-pink rounded-top">
                         {{-- Ini adalah bagian header kartu.
@@ -108,12 +109,15 @@
                                             </a>
                                         </div>
                                         <!-- Tombol hapus tugas -->
+                                        
                                         <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm p-0">
+                                                {{-- <!-- Ikon silang merah yang dramatis, tanda perpisahan dengan tugas 😢 --> --}}
                                                 <i class="bi bi-x-circle text-danger fs-5"></i>
                                             </button>
+                                            {{-- Kode ini bikin tombol hapus tugas yang kelihatan simpel tapi berbahaya 🥲. Pas diklik, tugas langsung hilang selamanya.  --}}
                                         </form>
                                     </div>
                                 </div>
@@ -184,80 +188,85 @@
         </div>
 
         <style>
+            /* Bagian utama dengan latar belakang gambar */
             #content {
-                background-image: url('images/aa6cf3d8c4f77810f93714ad3b7e2b00 (2).jpg');
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center;
-                backdrop-filter: blur(10px); /* Efek blur */
-                
+                background-image: url('images/aa6cf3d8c4f77810f93714ad3b7e2b00 (2).jpg'); /* Gambar latar belakang */
+                background-size: cover; /* Agar gambar menyesuaikan ukuran container */
+                background-repeat: no-repeat; /* Tidak mengulang gambar */
+                background-position: center; /* Pusatkan gambar */
+                backdrop-filter: blur(10px); /* Efek blur pada latar belakang */
             }
+        
+            /* Styling untuk bagian "Tentang Pembuat" */
             .about-creator {
-                background-color: #fce4ec; /* Warna latar belakang untuk bagian tentang pembuat */
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                background-color: #fce4ec; /* Warna pastel pink yang lembut */
+                padding: 20px; /* Ruang di dalam box agar tidak terlalu sempit */
+                border-radius: 10px; /* Sudut membulat agar lebih aesthetic */
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Efek bayangan halus */
             }
-
+        
+            /* Ikon sosial media */
             .social-icons a {
-                color: #d81b60; /* Warna ikon sosial media */
-                transition: color 0.3s;
+                color: #d81b60; /* Warna ikon sosial media pink */
+                transition: color 0.3s; /* Efek transisi saat hover */
             }
-
+        
             .social-icons a:hover {
-                color: #ff3b30; /* Warna saat hover */
+                color: #ff3b30; /* Warna berubah jadi pink lebih terang saat hover */
             }
-            
-            /* Warna pastel untuk tampilan coquette */
-            .bg-light-pink { background-color: #fce4ec; }
-            .bg-light-lilac { background-color: #ede7f6; }
-            .bg-light-peach { background-color: #ffebcd; }
-            .bg-light-blue { background-color: #e3f2fd; }
         
-            /* Card tampilan soft dan feminin */
+            /* Warna-warna pastel untuk elemen latar belakang */
+            .bg-light-pink { background-color: #fce4ec; } /* Pink lembut */
+            .bg-light-lilac { background-color: #ede7f6; } /* Lilac kalem */
+            .bg-light-peach { background-color: #ffebcd; } /* Peach hangat */
+            .bg-light-blue { background-color: #e3f2fd; } /* Biru pastel */
+        
+            /* Kartu dengan tampilan soft dan feminin */
             .pastel-card {
-                background: white;
-                border-radius: 20px;
-                box-shadow: none;
-            }
-    
-            /* Teks aesthetic */
-            .text-coquette {
-                font-family: 'Dancing Script', cursive;
-                color: #d81b60;
+                background: white; /* Warna dasar putih bersih */
+                border-radius: 20px; /* Sudut yang membulat agar terlihat lebih lembut */
+                box-shadow: none; /* Menghilangkan bayangan default */
             }
         
-            /* Tombol aesthetic */
+            /* Teks aesthetic dengan font script */
+            .text-coquette {
+                font-family: 'Dancing Script', cursive; /* Font tulisan tangan yang elegan */
+                color: #d81b60; /* Warna pink khas */
+            }
+        
+            /* Tombol dengan tampilan cute dan aesthetic */
             .cute-btn {
-                background-color: #f097b6;
-                color: white;
-                border-radius: 50px;
-                border: none;
-                font-weight: bold;
+                background-color: #f097b6; /* Warna pink pastel */
+                color: white; /* Teks putih agar kontras */
+                border-radius: 50px; /* Bentuk oval */
+                border: none; /* Menghilangkan border */
+                font-weight: bold; /* Membuat teks lebih tegas */
             }
         
             .cute-btn:hover {
-                background-color: #f48fb1;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                background-color: #f48fb1; /* Warna lebih terang saat hover */
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Efek bayangan saat hover */
             }
         
-            /* Input form coquette */
+            /* Input form dengan gaya coquette */
             .coquette-input {
-                border: 2px solid #ff6f61;
-                border-radius: 10px;
-                padding: 10px;
-                transition: border-color 0.3s;
+                border: 2px solid #ff6f61; /* Warna border merah pastel */
+                border-radius: 10px; /* Sudut membulat */
+                padding: 10px; /* Spasi dalam input */
+                transition: border-color 0.3s; /* Animasi saat fokus */
             }
         
             .coquette-input:focus {
-                border-color: #ff3b30;
-                outline: none;
+                border-color: #ff3b30; /* Warna lebih cerah saat fokus */
+                outline: none; /* Menghilangkan outline bawaan browser */
             }
+        
+            /* Styling untuk container dengan efek blur */
             .d-flex.gap-3.px-3.flex-nowrap.overflow-x-scroll.overflow-y-hidden {
-                backdrop-filter: blur(10px);
-                background: rgba(255, 255, 255, 0.2); /* Sesuaikan transparansi */
-                
+                backdrop-filter: blur(10px); /* Efek blur agar terlihat dreamy */
+                background: rgba(255, 255, 255, 0.2); /* Warna putih transparan */
             }
         </style>
+        
     </div>
 @endsection
