@@ -43,6 +43,10 @@
                                         <div class="d-flex justify-content-center gap-2">
                                             <!-- Jika tugas prioritas tinggi dan belum selesai, tampilkan indikator -->
                                             @if ($task->priority == 'high' && !$task->is_completed)
+                                            {{-- @if: Ini adalah directive Blade untuk membuat kondisi.
+                                                $task->priority == 'high': Mengecek apakah prioritas tugas ($task->priority) bernilai 'high'.
+                                                && !$task->is_completed: Memastikan tugas belum selesai (is_completed bernilai false).
+                                                Jika kedua kondisi ini terpenuhi, maka blok kode di dalamnya akan dieksekusi. --}}
                                                 <div class="spinner-grow spinner-grow-sm text-{{ $task->priorityClass }}"
                                                     role="status">
                                                     <span class="visually-hidden">Loading...</span>
