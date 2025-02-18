@@ -24,6 +24,7 @@
                 
                 <script>
                     document.getElementById('clearSearch').addEventListener('click', function () {
+                    
                         document.getElementById('searchQuery').value = ''; // Kosongkan input
                         window.location.href = "{{ route('home') }}"; // Redirect ke halaman awal
                     });
