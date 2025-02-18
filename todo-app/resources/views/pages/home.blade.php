@@ -4,10 +4,14 @@
     <div id="content" class="overflow-y-hidden overflow-x-hidden">
         @if ($lists->count() == 0)
             <!-- Jika tidak ada daftar tugas, tampilkan pesan dan tombol untuk menambahkan list -->
+            <!-- Container utama dengan flexbox, mengatur elemen dalam kolom dan rata tengah -->
             <div class="d-flex flex-column align-items-center">
+                {{-- <!-- Paragraf dengan teks ditampilkan di tengah dan font italic --> --}}
                 <p class="text-center fst-italic">Belum ada tugas yang ditambahkan</p>
+                 <!-- Tombol untuk menambah tugas, dengan ikon dan teks berjajar menggunakan flexbox -->
                 <button type="button" class="btn d-flex align-items-center gap-2" style="width: fit-content;"
                     data-bs-toggle="modal" data-bs-target="#addListModal">
+                    <!-- Ikon plus dari Bootstrap Icons dengan ukuran besar -->
                     <i class="bi bi-plus-square fs-1"></i>
                 </button>
             </div>
@@ -124,8 +128,6 @@
                     <i class="bi bi-instagram fs-4 text-coquette"></i>
                 </a>
             </div>
-            
-            <a href="[LINK_PROFIL]" class="btn btn-coquette mt-3">Lihat Profil</a>
         </div>
 
         <style>
