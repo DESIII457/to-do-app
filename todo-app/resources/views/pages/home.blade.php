@@ -50,6 +50,12 @@
                     </div>
 
                     <div class="card-body d-flex flex-column gap-2 overflow-x-hidden">
+                        {{-- d-flex flex-column:
+                            Menggunakan Flexbox untuk menyusun elemen secara vertikal.
+                            gap-2:
+                            Memberikan jarak antar elemen sebesar Bootstrap spacing 2.
+                            overflow-x-hidden:
+                            Menyembunyikan konten yang melewati lebar container untuk mencegah scroll horizontal. --}}
                         @foreach ($list->tasks as $task)
                             <!-- Card untuk setiap tugas dalam list -->
                             <div class="card {{ $task->is_completed ? 'bg-secondary-subtle' : '' }} cute-task-card">
