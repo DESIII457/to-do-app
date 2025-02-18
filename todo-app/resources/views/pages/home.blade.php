@@ -22,7 +22,6 @@
             @foreach ($lists as $list)
                 <!-- Card untuk setiap list -->
                 <div class="card flex-shrink-0 border-0 shadow-lg pastel-card" style="width: 18rem; max-height: 80vh; ">
-                    <img src="{{asset('images/OIP.jpg')}}" alt="Gambar Profil" style="width: 288px; height: 100px;">
                     <!-- Header kartu dengan styling dan layout flexbox -->
                     <div class="card-header d-flex align-items-center justify-content-between bg-light-pink rounded-top">
                         {{-- Ini adalah bagian header kartu.
