@@ -80,7 +80,7 @@
 
 /* Kartu dengan tampilan soft dan feminin */
 .pastel-card {
-    background: white; /* Warna dasar putih bersih */
+    background: none; /* Warna dasar putih bersih */
     border-radius: 20px; /* Sudut yang membulat agar terlihat lebih lembut */
     box-shadow: none; /* Menghilangkan bayangan default */
 }

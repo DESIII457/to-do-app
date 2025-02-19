@@ -2,6 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" href="css/style.css">
+{{-- menambahkan style css yang ada di public/image --}}
     <div id="content" class="overflow-y-hidden overflow-x-hidden">
         @if ($lists->count() == 0)
             <!-- Jika tidak ada daftar tugas, tampilkan pesan dan tombol untuk menambahkan list -->
@@ -163,14 +164,58 @@
 
         <!-- Bagian tentang pembuat halaman -->
         <div class="about-creator mt-70 text-center p-4 rounded shadow" style="background-color: #e99bb5;">
-            <h5 class="text-coquette mb-3">Tentang Pembuat Halaman</h5>
-            <img src="{{asset('images/c4380d8f0d7cbb4221446bb0105c8191.jpg')}}" alt="Gambar Profil" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+            <div id="carouselExampleCaptions" class="carousel slide">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{{asset('images/WhatsApp Image 2025-02-19 at 10.13.01.jpeg')}}" class="d-block w-70" alt="..." style="width: 600px; height: 200px; object-fit: cover;">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>2023</h5>
+                      <p>........</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{asset('images\WhatsApp Image 2025-02-19 at 11.34.19.jpeg')}}" class="d-block w-70" alt="..."
+                    style="width: 600px; height: 200px; object-fit: cover;">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>2024</h5>
+                      <p>.......</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{asset('images\OIP.jpg')}}" class="d-block w-70" alt="..."
+                    style="width: 600px; height: 200px; object-fit: cover;">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Third slide label</h5>
+                      <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            <br>
+            <br>
+            <div style="background-color: PINK; border-radius: 80px;">
+                <h5 class="text-coquette mb-3">Tentang Pembuat Halaman</h5>
             <p class="fw-bold">Halaman ini dibuat oleh DESI LISNAWATI.</p>
-            <p class="text-muted">Pembuat to-do-list ini adalah seorang manusia yang mempunyai hobi menggambar, membuat kerajinan tangan atau pun kadang kadang dia menjadi anomali di tengahh kesibukan dunia yang tiada hentinya di zaman sekarang.</p>
+            <p class="text-muted">Pembuat to-do-list ini adalah seorang manusia yang mempunyai hobi menggambar, membuat kerajinan tangan  </p>
+            <p class="text-muted">atau pun kadang kadang dia menjadi anomali di tengahh kesibukan dunia yang tiada hentinya di zaman sekarang. Cita citanya adalah menjadi seorang</p>
+            </div>
             
             <div class="social-icons mt-3">
                 <!-- Link yang mengarah ke GitHub -->
-                <a href="https://github.com/" class="text-decoration-none me-2" target="_blank">
+                <a href="https://github.com/DESIII457/to-do-app" class="text-decoration-none me-2" target="_blank">
                 {{--  Menentukan URL tujuan, dalam hal ini GitHub.
                 text-decoration-none → Menghapus underline bawaan dari tautan.
                 me-2 → Menambahkan margin-end (jarak ke kanan) sebesar 2 (Bootstrap spacing). --}}
@@ -187,4 +232,11 @@
             </div>
         </div>
     </div>
+    <style>
+        p {
+    margin: 5px 0; /* Atur jarak atas & bawah */
+    padding: 0; /* Hilangkan padding jika ada */
+}
+
+    </style>
 @endsection
